@@ -1,0 +1,75 @@
+<div class="container-fluid">
+  <app-header></app-header>
+    <div class="container">
+      <div class="input-group mb-3">
+        <input type="text" [(ngModel)]="model" name="model" (change)="search()" class="form-control" placeholder="Enter car model for start search" >
+      </div>
+    <div class="container mt-3 cars" >
+        <h2>List of available cars</h2>          
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th (click)="sort('brand')">Car brand&#9660;</th>
+              <th (click)="sort('model')">Сar model&#9660;</th>
+              <th (click)="sort('year')">Year of release&#9660;</th>
+              <th></th>
+              
+            </tr>
+          </thead>
+          <tbody *ngIf="cars.length > 0; else unset">
+            <tr *ngFor="let car of cars | orderBy: key: reverse">
+              <td>{{ car.brand }}</td>
+              <td>{{ car.model }}</td>
+              <td>{{ car.year }}</td>
+              <td><app-form ></app-form></td> 
+              <td><button type="button" class="btn btn-success"(click)="delete(car)" >Delete</button></td>
+            </tr>
+          </tbody>
+        </table>
+    </div>
+  <ng-template #unset>  
+    <h2>The list is empty. Create a new model</h2>
+  </ng-template>
+
+  <!-- Button to Open the Modal -->
+  <button type="button" class="btn btn-success" data-toggle="modal" data-target="#myModal">
+    Create new item
+  </button>
+
+  <!-- The Modal -->
+  <div class="modal fade" id="myModal">
+    <div class="modal-dialog modal-sm">
+      <div class="modal-content">
+      
+        <!-- Modal Header -->
+      <div class="modal-header">
+          <h4 class="modal-title">Modal Heading</h4>
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+    
+
+      <div class="modal-body">
+        <h4>Create new item</h4>
+        <form [formGroup]="carForm" class="form-group">
+            <label for="usr">Car brand:</label>
+            <input formControlName="brand" type="text" class="form-control" placeholder="Car brand" id="usr">
+            <label for="usr1">Car model:</label>
+            <input formControlName="model" type="text" class="form-control" placeholder="Car model" id="usr1">
+            <label for="usr2">Year of release:</label>
+            <input formControlName="year" type="text" class="form-control" placeholder="Year of release" id="usr2">
+        </form>
+    
+      
+        <!-- Modal footer -->
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary btn-success" data-dismiss="modal" (click)="create()">Create</button> 
+        </div>
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+</div>
+
+
