@@ -4,6 +4,7 @@ import { Cars } from 'src/app/classes/cars';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { CarFetch } from 'src/app/classes/carFetch';
+import { CarNew } from 'src/app/classes/carNew';
 
 
 @Component({
@@ -32,6 +33,7 @@ export class MainComponent implements OnInit {
   carForm: FormGroup;
   val: any;
   car: any = CarFetch;
+  createCar: CarNew = new CarNew();
 
   model: any;
   search() {
@@ -51,24 +53,32 @@ export class MainComponent implements OnInit {
     this.key = key;
     this.reverse = !this.reverse;
   }
-  
-  create(): void {
-    this.cars.push(this.carForm.value);
-    this.carForm.reset();
+
+  create() {
+    this.createCar.id = this.carForm.value.id;
+    this.createCar.brand = this.carForm.value.brand;
+    this.createCar.model = this.carForm.value.model;
+    this.createCar.year = this.carForm.value.year;
+    this.ds.create(this.createCar).subscribe((res) => {
+      this.carForm.reset();
+      this.ds.getCars().subscribe((responce) => {
+        this.cars = responce;
+      })
+    });
   }
 
-  delete(element: any) {
-    this.cars.forEach((value, index) => {
-      if(value == element) {
-        this.cars.splice(index, 1)
-      }
-    })
+  delete(val: any) {
+    this.ds.deleteCar(val).subscribe((data) => {
+      this.ds.getCars().subscribe((responce) => {
+        this.cars = responce;
+      })
+    });
   }
 
   edit(id: any) {
     this.router.navigate(['/main', id])
   }
-
+  
   getCars() {
     this.ds.getCars().subscribe((responce) => {
       this.cars = responce;

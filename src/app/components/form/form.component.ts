@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { Cars } from 'src/app/classes/cars';
 import { CarFetch } from 'src/app/classes/carFetch';
 import { DataService } from 'src/app/services/data.service';
-import { HttpClient } from '@angular/common/http';
+import { CarNew } from 'src/app/classes/carNew';
 
 
 
@@ -31,13 +31,6 @@ export class FormComponent implements OnInit {
     })
   }
 
-  /*edit() {
-    this.ds.editCar(this.car).subscribe(data => {
-      this.car = data;
-    });
-    this.router.navigate([''])
-    this.getCars();
-  }*/ 
   edit() {
     this.ds.editCar(this.car).subscribe(data => {
       this.car = data;
@@ -55,12 +48,5 @@ export class FormComponent implements OnInit {
   close() {
     this.router.navigate(['/main']);
   }
- 
-  /*edit(id: any) {
-    this.router.navigate(['/main', id])
-  }*/
-
-
- 
   
 }

@@ -1,4 +1,4 @@
-export class CarFetch {
+export class CarNew {
     id: any;
     brand: any;
     model: any;
