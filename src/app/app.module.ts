@@ -1,7 +1,7 @@
 
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule, NgForm } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 
 import { AppRoutingModule } from './app-routing.module';
@@ -36,10 +36,7 @@ import { StarterComponent } from './components/starter/starter.component';
     Ng2SearchPipeModule,
     Ng2OrderModule,
     HttpClientModule, 
-    ReactiveFormsModule,
-    
-    
-   
+    ReactiveFormsModule
   ],
   providers: [
     DataService,

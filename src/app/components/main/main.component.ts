@@ -6,7 +6,6 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { CarFetch } from 'src/app/classes/carFetch';
 
 
-
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
@@ -27,13 +26,6 @@ export class MainComponent implements OnInit {
     this.ds.getCars().subscribe((responce) => {
       this.cars = responce;
     });
-
-    let sub = this.route.params.subscribe(params => {
-      this.val = params['id']
-    });
-    this.ds.getEditCar(this.val).subscribe(data => {
-      this.car = data;
-    })
   }
   
   cars:Cars[] = [];
@@ -73,7 +65,9 @@ export class MainComponent implements OnInit {
     })
   }
 
- 
+  edit(id: any) {
+    this.router.navigate(['/main', id])
+  }
 
   getCars() {
     this.ds.getCars().subscribe((responce) => {

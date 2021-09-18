@@ -10,7 +10,7 @@ import { map } from 'rxjs/operators';
 })
 export class DataService {
   
-  headers = new HttpHeaders().set('Content-type', 'application/json').set('Accept', 'application/json');
+  headers = new HttpHeaders().set('Content-Type', 'application/json; charset=utf-8').set('Accept', 'text/html,application/xhtml+xml,application/xml;q=0.9,image/avif,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9');
   httpOptions = {
     headers: this.headers
   }
@@ -20,20 +20,19 @@ export class DataService {
 
   url:string = "http://localhost:3000/Cars";
   getCars() {
-
+    console.log(this.httpOptions)
     return this.http.get<Cars[]>(this.url);
+    
   }
 
-  getEditCar(id:any): Observable<Cars> {
+  getEditCar(id: any): Observable<Cars> {
     const url = `${this.url}/${id}`;
-    console.log(url)
     return this.http.get<Cars>(url, this.httpOptions);
   }
  
-  
   editCar(car:CarFetch): Observable<Cars> {
     const url = `${this.url}/${car.id}`;
-    return this.http.put<Cars>(url, this.httpOptions).pipe(
+    return this.http.put<Cars>(url, car, this.httpOptions).pipe(
       map(() => car)
     );
   }

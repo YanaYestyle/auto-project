@@ -1,3 +1,45 @@
+.container-fluid {
+    height: 1100px;
+}
+
 .mb-3 {
     margin: 2%;
+}
+
+.btn {
+    width: 6rem;
+}
+
+h2 {
+    text-align: center;
+    font-weight: bold;
+    color: #28A745;
+}
+
+h4 {
+    text-align: center;
+    font-weight: bold;
+    color: #28A745;
+}
+
+.modal-header {
+    background: #28A745;
+}
+
+label {
+    margin-top: 1%;
+    margin-bottom: 1%;
+    color: #28A745;
+}
+
+.create {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.item {
+    width: 15rem;
+    margin-top: 1%;
+    margin-right: 20%;
+    margin-bottom: 5%;
 }

@@ -1,8 +1,10 @@
 export class Cars {
+    
     id: any;
     brand: any;
     model: any;
     year: any;
+
 
     constructor(id: any, brand: any, model: any, year: any) {
         this.id = id;

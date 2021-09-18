@@ -102,7 +102,7 @@ svg {
 
 .btn:hover {
   transition: 1s ease-in-out;
-  background: #5A5F37;
+  background: #28A745;
 }
 
 .btn:hover svg {
