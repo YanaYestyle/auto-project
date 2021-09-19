@@ -32,14 +32,10 @@ label {
     color: #28A745;
 }
 
-.create {
-    display: flex;
-    justify-content: flex-end;
+.item {
+    width: 10rem;
 }
 
-.item {
-    width: 15rem;
-    margin-top: 1%;
-    margin-right: 20%;
-    margin-bottom: 5%;
+table {
+    margin-bottom: 5rem;
 }

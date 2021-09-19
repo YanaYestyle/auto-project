@@ -16,8 +16,12 @@
               <th (click)="sort('brand')">Car brand&#9660;</th>
               <th (click)="sort('model')">Сar model&#9660;</th>
               <th (click)="sort('year')">Year of release&#9660;</th>
-              <th></th>
-              <th></th>
+              <th colspan="2" style="text-align: center !important;">
+                <!-- Button to Open the Modal -->
+                <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#myModal">
+                  Create new item
+                 </button>
+              </th>
             </tr>
           </thead>
           <tbody *ngIf="cars.length > 0; else unset">
@@ -41,13 +45,6 @@
     </ng-template>
   </div>
   
-  <div class="create">
-  <!-- Button to Open the Modal -->
-    <button type="button" class="btn btn-success item" data-toggle="modal" data-target="#myModal">
-      Create new item
-    </button>
-  </div>
-
   <!-- The Modal -->
   <div class="modal fade" id="myModal">
     <div class="modal-dialog modal-sm">
