@@ -35,7 +35,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 * [bootstrap5](https://www.w3schools.com/bootstrap5)
 
 #### Json server
+##### In order to see the json file in the development process, you need to install:
 npm i -g json-server
-to start:
-* cd auto
+##### to start:
+* cd The folder where cars.json is located
 * json-server --watch cars.json
