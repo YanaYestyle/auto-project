@@ -19,11 +19,13 @@
                 <label for="usr1">Car model:</label>
                 <input [(ngModel)]="car.model" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Car model" id="usr1">
                 <label for="usr2">Year of release:</label>
-                <input [(ngModel)]="car.year" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Year of release" id="usr2">
+                <input [(ngModel)]="car.year" #year="ngModel" [ngModelOptions]="{standalone: true}" type="text" class="form-control" placeholder="Year of release" id="usr2" minlength=4 maxlength=4 pattern="^[0-9]+$" required>
+                <div *ngIf="year.errors?.pattern">Enter only numbers</div>
+                <div *ngIf="year.errors?.minlength">You need to enter 4 digits</div>
             </form>
             <!-- Modal footer -->
             <div class="modal-footer">
-              <button type="button" class="btn btn-secondary btn-success" data-dismiss="modal" (click)="edit()">Edit</button> 
+              <button type="button" class="btn btn-secondary btn-success" data-dismiss="modal" [disabled]="!year.valid" (click)="edit()">Edit</button> 
             </div>
           </div>
         </div>
